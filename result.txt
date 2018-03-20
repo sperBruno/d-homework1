@@ -1,0 +1,13 @@
+7 tests passed.
+11 tests failed.
+#1. heap implementation returns a null value, make sure to implement all required functions
+#2. heap implementation returns a null value, make sure to implement all required functions
+#3. heap implementation returns a null value, make sure to implement all required functions
+#4.  One of the test cases timed out, probably due to an inefficient solution (testLarge1Merge(PrivateTests))
+#5.  One of the test cases timed out, probably due to an inefficient solution (testLarge1Quick(PrivateTests))
+#6.  One of the test cases timed out, probably due to an inefficient solution (testLarge2Merge(PrivateTests))
+#7.  One of the test cases timed out, probably due to an inefficient solution (testLarge2Quick(PrivateTests))
+#8.  One of the test cases timed out, probably due to an inefficient solution (testLarge3Merge(PrivateTests))
+#9. heap implementation returns a null value, make sure to implement all required functions
+#10. heap implementation returns a null value, make sure to implement all required functions
+#11. heap implementation returns a null value, make sure to implement all required functions
