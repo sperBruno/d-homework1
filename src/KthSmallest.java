@@ -44,11 +44,11 @@ public class KthSmallest {
 		//h.printHeap();
 		//remove the first k-1 elements (i.e. the k-1 smallest element)
 		for (int i = 0; i < k-1; i++) {
-			System.out.println("sadfa" + h.extractMin() );
+			System.out.println("ExtracteINloop " + h.extractMin() );
 			//h.extractMin();
 		}
 		minHeapComparisons = CompareInt.countComparisons(arr, 1, arr.length - 1);
-		System.out.println(minHeapComparisons);
+		//System.out.println(minHeapComparisons);
 		//the next smallest element in the min-heap is the kth smallest element
 		//System.out.println("RESULT" + h.extractMin().val);
 		return h.extractMin().val;

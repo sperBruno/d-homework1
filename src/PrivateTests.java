@@ -15,15 +15,7 @@ public class PrivateTests
     return newArr;
   }
   
-  private static void shuffle(int[] array) {
-    int n = array.length;
-    for (int i = 0; i < n; i++) {
-      int random = i + (int)(Math.random() * (n - i));
-      int temp = array[random];
-      array[random] = array[i];
-      array[i] = temp;
-    }
-  }
+
   
   @Test
   public void testHeap() {
@@ -66,7 +58,7 @@ public class PrivateTests
         "quick select implementation throws exception " + e + " when getting 2nd smallest element " + "from an array of 3");
     }
   }
- 
+ */
   @Test
   public void test2Heap() {
     CompareInt[] arr = convert(new int[] { 1, 2, 3, 4, 5, 6, 7, 8 });
@@ -80,7 +72,7 @@ public class PrivateTests
         "heap implementation throws exception " + e + " when getting 2nd largest element " + "from a pre-sorted array");
     }
   }
-   */
+   
   /*
   @Test
   public void test2Merge()

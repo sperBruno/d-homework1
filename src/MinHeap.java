@@ -1,4 +1,4 @@
-import java.util.Arrays;
+
 
 /**
  * A Heap implementation class
@@ -24,7 +24,7 @@ public class MinHeap {
 	 *            the maximum number of elements allowed in the heap
 	 */
 	public MinHeap(int n) {
-		heap = new CompareInt[n + 1];
+		heap = new CompareInt[n+1];
 		size = 0;
 	}
 
@@ -42,7 +42,7 @@ public class MinHeap {
 
 	public void insert(CompareInt value) {
 
-		if (size == heap.length)
+		if (size == heap.length-1)
 			System.out.println("Heap's underlying storage is overflow");
 		else {
 			heap[++size] = value;
@@ -55,12 +55,10 @@ public class MinHeap {
 
 	private void verifyMinParent(int index) {
 		int parentIndex = getParent(index);
-
 		if (heap[parentIndex].compareTo(heap[index]) > 0) {
 			swap(index, parentIndex);
 			verifyMinParent(parentIndex);
 		}
-
 	}
 
 	private int getParent(int indexChild) {
@@ -80,12 +78,12 @@ public class MinHeap {
 	 * Extracts the smallest element from the heap
 	 */
 	public CompareInt extractMin() {
-		// Arrays.sort(this.heap);
+		
 		countExtract++;
 		CompareInt minHeap = this.heap[1];
-		this.heap[1] = this.heap[heap.length - 1];
-		this.heap[heap.length - 1] = null;
-		newSize = (heap.length-1) - countExtract;
+		this.heap[1] = this.heap[size];
+		this.heap[size] = null;
+		newSize = (size) - countExtract;
 
 		orderNewMeanHeap(1);
 		return minHeap;
@@ -94,6 +92,7 @@ public class MinHeap {
 
 	private void orderNewMeanHeap(int index) {
 		final int leftChild = leftChild(index);
+		System.out.println("LEFT CHILD "+ (leftChild-1));
 		CompareInt left = heap[leftChild-1];
 		System.out.println(left);
 		final int rightChild = rightChild(index);
@@ -112,6 +111,7 @@ public class MinHeap {
 		}
 		if (indexToChange < newSize) {
 			swap(index, indexToChange);
+			
 			orderNewMeanHeap(indexToChange);
 		}
 	}
