@@ -3,124 +3,126 @@ import java.util.Arrays;
 /**
  * A Heap implementation class
  * 
- * @param heap the array that holds the heap data
- * @param size the number of elements currently stored in the heap
+ * @param heap
+ *            the array that holds the heap data
+ * @param size
+ *            the number of elements currently stored in the heap
  */
 public class MinHeap {
-	
+
 	CompareInt[] heap;
 	int size;
-	
-	int position = 0;
+	int newSize;
+
+	int countExtract = 0;
+
 	/**
-	 * Constructs a new heap with maximum capacity n
-	 * Remember to index your heap at 1 instead of 0!
-	 * @param n the maximum number of elements allowed in the heap
+	 * Constructs a new heap with maximum capacity n Remember to index your heap
+	 * at 1 instead of 0!
+	 * 
+	 * @param n
+	 *            the maximum number of elements allowed in the heap
 	 */
 	public MinHeap(int n) {
-		heap = new CompareInt[n+1];
+		heap = new CompareInt[n + 1];
 		size = 0;
 	}
-	
+
 	/**
 	 * Adds an element to the heap
 	 * 
-	 * @param val the value to be added to the heap
-	 * @throws Exception 
+	 * @param val
+	 *            the value to be added to the heap
+	 * @throws Exception
 	 */
 	public void add(CompareInt val) {
 		insert(val);
-		
-		
+
 	}
 
-	public void insert(CompareInt value)  {
+	public void insert(CompareInt value) {
 
 		if (size == heap.length)
-
 			System.out.println("Heap's underlying storage is overflow");
-
 		else {
-
-			//size++;
-
 			heap[++size] = value;
 			verifyMinParent(size);
-			//printHeap();
 			System.out.println(heap[size].val);
 			System.out.println("SIZZE is " + size);
-
-			//siftUp(size - 1);
-
 		}
 
-	} 
-	private void verifyMinParent(int index){
+	}
+
+	private void verifyMinParent(int index) {
 		int parentIndex = getParent(index);
-		
-		if (heap[parentIndex].compareTo(heap[index])>0){
+
+		if (heap[parentIndex].compareTo(heap[index]) > 0) {
 			swap(index, parentIndex);
 			verifyMinParent(parentIndex);
 		}
-		
+
 	}
-	private int getParent(int indexChild){
-		if (indexChild == 1){
+
+	private int getParent(int indexChild) {
+		if (indexChild == 1) {
 			return 1;
 		}
-		return indexChild/2;
-	}
- 
-
-	private void siftUp(int nodeIndex) {
-
-		int parentIndex;
-		CompareInt tmp;
-
-		if (nodeIndex != 0) {
-
-			//parentIndex = getParentIndex(nodeIndex);
-			parentIndex = nodeIndex/2;
-
-			if (heap[parentIndex].compareTo(heap[nodeIndex]) >= 0) {
-
-				tmp = heap[parentIndex];
-
-				heap[parentIndex] = heap[nodeIndex];
-
-				heap[nodeIndex] = tmp;
-
-				siftUp(parentIndex);
-
-			}
-
-		}
-
-	}
-	
-	
-	public void printHeap(){
-		System.out.println("ALLL HEAP " + heap.length);
-		int i;
-		for (CompareInt node : heap) {
-			System.out.println(node.val);
-		}	
+		return indexChild / 2;
 	}
 
-	  private void swap(int i, int parent) {
-
-	        CompareInt temp = heap[parent];
-	        heap[parent] = heap[i];
-	        heap[i]= temp;
-	    }
+	private void swap(int i, int parent) {
+		CompareInt temp = heap[parent];
+		heap[parent] = heap[i];
+		heap[i] = temp;
+	}
 
 	/**
 	 * Extracts the smallest element from the heap
 	 */
 	public CompareInt extractMin() {
-		//Arrays.sort(this.heap);
-		return this.heap[0];
+		// Arrays.sort(this.heap);
+		countExtract++;
+		CompareInt minHeap = this.heap[1];
+		this.heap[1] = this.heap[heap.length - 1];
+		this.heap[heap.length - 1] = null;
+		newSize = (heap.length-1) - countExtract;
+
+		orderNewMeanHeap(1);
+		return minHeap;
+
+	}
+
+	private void orderNewMeanHeap(int index) {
+		final int leftChild = leftChild(index);
+		CompareInt left = heap[leftChild-1];
+		System.out.println(left);
+		final int rightChild = rightChild(index);
+		System.out.println("RGITH CHILD "+ (rightChild-1));
+		CompareInt right = heap[rightChild-1];
+		System.out.println(right);
 		
+		
+		int indexToChange;
+		if (left == null && right != null) {
+			indexToChange = rightChild;
+		} else if ((left != null && right == null)) {
+			indexToChange = leftChild;
+		} else {
+			indexToChange = left.compareTo(right) > 0 ? rightChild : leftChild;
+		}
+		if (indexToChange < newSize) {
+			swap(index, indexToChange);
+			orderNewMeanHeap(indexToChange);
+		}
+	}
+
+	private int leftChild(int indexParent) {
+		return (2 * indexParent) + 1;
+	}
+
+	private int rightChild(int i) {
+
+		return (2 * i) + 2;
 	}
 	
 	
