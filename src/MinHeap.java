@@ -111,12 +111,40 @@ public class MinHeap {
 			indexToChange = left.compareTo(right) < 0 ? leftChild  : rightChild;
 		}
 		
-		if (indexToChange < newSize) {
-			
-			swap(index, indexToChange);
-			
-			orderNewMeanHeap(indexToChange);
+		
+		
+		-1. parentIndex = index;
+		0. leftChildIndex = getLeftChild(parentIndex)
+		0. rightChildIndex = getRightChild(parentIndex)
+		childL = heap[leftChildIndex]
+		childR = heap[rightChildIndex]
+		
+		if ((childR == null && childL == null) or childL == null)
+			return;
+		
+		if (childL.compareTo(childR) < 0)
+			minChildIdx = leftChildIndex
+		else 
+			minChildIdx = rightChildIndex
+		
+		
+		swap(parentIndex, minChildIdx)
+		
+		childL = heap[leftChildIndex]
+		childR = heap[rightChildIndex]
+		if (childL.compareTo(childR) > 0)
+		{
+			swap(leftChildIndex, rightChildIndex)
 		}
+		
+		orderNewMeanHeap(rightChildIndex)
+		
+		// 2. parent = indexToChange
+		
+		// 3. child = index
+		// 4. brother = a partir de parent encontrar el otro child
+		// 5 swap(child, brother)
+		// 6. orderNewMeanHeap(brother)
 	}
 
 	private int leftChild(int indexParent) {
