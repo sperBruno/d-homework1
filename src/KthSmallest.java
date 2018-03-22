@@ -41,8 +41,10 @@ public class KthSmallest {
 		for (int i = 0; i < arr.length; i++) {
 			h.add(arr[i]);
 		}
+		//[null, 1, 2, 3, 4, 5, 6, 7, 8] 
 		//h.printHeap();
 		//remove the first k-1 elements (i.e. the k-1 smallest element)
+		//7
 		for (int i = 0; i < k-1; i++) {
 			System.out.println("ExtracteINloop " + h.extractMin() );
 			//h.extractMin();
@@ -51,7 +53,10 @@ public class KthSmallest {
 		//System.out.println(minHeapComparisons);
 		//the next smallest element in the min-heap is the kth smallest element
 		//System.out.println("RESULT" + h.extractMin().val);
-		return h.extractMin().val;
+		int min= h.extractMin() != null ? h.extractMin().val : -1;
+		System.out.println(min);
+		return min;
+		// return min.val;
 	}
 	
 	public static int getMergeSortComparisons() {

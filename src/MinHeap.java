@@ -78,13 +78,14 @@ public class MinHeap {
 	 * Extracts the smallest element from the heap
 	 */
 	public CompareInt extractMin() {
-		
+		//[null, 1, 2, 3, 4, 5, 6, 7, 8 ]
 		countExtract++;
 		CompareInt minHeap = this.heap[1];
 		this.heap[1] = this.heap[size];
 		this.heap[size] = null;
+		//change variable nonNullElementCount
 		newSize = (size) - countExtract;
-
+		//1. [[null, 8, 2, 3, 4, 5, 6, 7, null ]]
 		orderNewMeanHeap(1);
 		return minHeap;
 
@@ -107,9 +108,11 @@ public class MinHeap {
 		} else if ((left != null && right == null)) {
 			indexToChange = leftChild;
 		} else {
-			indexToChange = left.compareTo(right) > 0 ? rightChild : leftChild;
+			indexToChange = left.compareTo(right) < 0 ? leftChild  : rightChild;
 		}
+		
 		if (indexToChange < newSize) {
+			
 			swap(index, indexToChange);
 			
 			orderNewMeanHeap(indexToChange);

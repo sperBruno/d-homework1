@@ -66,6 +66,7 @@ public class PrivateTests
       Assert.assertTrue("heap implementation does no correctly get the 2nd largest element from a pre-sorted array", 
         KthSmallest.heapImpl(7, arr) == 7);
     } catch (NullPointerException e) {
+    	e.printStackTrace();
       Assert.fail("heap implementation returns a null value, make sure to implement all required functions");
     } catch (Exception e) {
       Assert.fail(
