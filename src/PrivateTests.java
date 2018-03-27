@@ -58,7 +58,7 @@ public class PrivateTests
         "quick select implementation throws exception " + e + " when getting 2nd smallest element " + "from an array of 3");
     }
   }
- */
+*/
   @Test
   public void test2Heap() {
     CompareInt[] arr = convert(new int[] { 1, 2, 3, 4, 5, 6, 7, 8 });
@@ -73,7 +73,7 @@ public class PrivateTests
         "heap implementation throws exception " + e + " when getting 2nd largest element " + "from a pre-sorted array");
     }
   }
-   
+  
   /*
   @Test
   public void test2Merge()

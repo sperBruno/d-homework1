@@ -53,7 +53,8 @@ public class KthSmallest {
 		//System.out.println(minHeapComparisons);
 		//the next smallest element in the min-heap is the kth smallest element
 		//System.out.println("RESULT" + h.extractMin().val);
-		int min= h.extractMin() != null ? h.extractMin().val : -1;
+		//int min= h.extractMin() != null ? h.extractMin().val : -1;
+		int min=h.extractMin().val;
 		System.out.println(min);
 		return min;
 		// return min.val;
