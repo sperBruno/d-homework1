@@ -5,3 +5,6 @@ bin/
 *.class
 /bin
 /.settings
+/*.txt
+*.project
+*.jar
