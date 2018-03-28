@@ -22,8 +22,6 @@ public class Sorting {
 		CompareInt auxLeftArray[] = new CompareInt[leftArraySize];
 		CompareInt auxRightArray[] = new CompareInt[rightArraySize];
 
-		// abstract
-		// search for template
 		for (int i = 0; i < leftArraySize; ++i)
 			auxLeftArray[i] = arr[left + i];
 		for (int j = 0; j < rightArraySize; ++j)
@@ -48,7 +46,6 @@ public class Sorting {
 			k++;
 		}
 
-		// search template
 		while (leftIndex < leftArraySize) {
 			arr[k] = auxLeftArray[leftIndex];
 			leftIndex++;
@@ -60,6 +57,7 @@ public class Sorting {
 			rightIndex++;
 			k++;
 		}
+
 	}
 
 	private static void sort(CompareInt arr[], int left, int right) {

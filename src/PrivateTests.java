@@ -15,7 +15,15 @@ public class PrivateTests
     return newArr;
   }
   
-
+  private static void shuffle(int[] array) {
+	    int n = array.length;
+	    for (int i = 0; i < n; i++) {
+	      int random = i + (int)(Math.random() * (n - i));
+	      int temp = array[random];
+	      array[random] = array[i];
+	      array[i] = temp;
+	    }
+	  }
   
   @Test
   public void testHeap() {
@@ -31,7 +39,7 @@ public class PrivateTests
     }
   }
   
- /* @Test
+  @Test
   public void testMerge() {
     CompareInt[] arr = convert(new int[] { 3, 1, 2 });
     try {
@@ -58,7 +66,7 @@ public class PrivateTests
         "quick select implementation throws exception " + e + " when getting 2nd smallest element " + "from an array of 3");
     }
   }
-*/
+
   @Test
   public void test2Heap() {
     CompareInt[] arr = convert(new int[] { 1, 2, 3, 4, 5, 6, 7, 8 });
@@ -74,7 +82,7 @@ public class PrivateTests
     }
   }
   
-  /*
+  
   @Test
   public void test2Merge()
   {
@@ -117,8 +125,8 @@ public class PrivateTests
         "heap implementation throws exception " + e + " on a midsized array, getting the " + "6th smallest element");
     }
   }
-  */
-  /*
+  
+  
   @Test
   public void test3Merge() {
     CompareInt[] arr = convert(new int[] { 9, 7, 0, 5, 8, 2, 3, 13, -4 });
@@ -168,7 +176,7 @@ public class PrivateTests
         "heap implementation throws exception " + e + " on a very large array, getting a " + "small element");
     }
   }
-  /*
+  
   @Test(timeout=4000L)
   public void testLarge1Merge() {
     int[] arr = new int[1000000];
@@ -234,7 +242,7 @@ public class PrivateTests
         "heap implementation throws exception " + e + " on a very large array, getting a " + "large element");
     }
   }
-  /*
+ 
   @Test(timeout=4000L)
   public void testLarge2Merge() {
     int[] arr = new int[1000000];
@@ -301,7 +309,7 @@ public class PrivateTests
         "heap implementation throws exception " + e + " on a very large array, getting a " + "middle element");
     }
   }
-  /*
+
   @Test(timeout=4000L)
   public void testLarge3Merge() {
     int[] arr = new int[1000000];
@@ -344,5 +352,5 @@ public class PrivateTests
       Assert.fail(
         "quick select implementation throws exception " + e + " on a very large array, getting a " + "middle element");
     }
-  }*/
+  }
 }
